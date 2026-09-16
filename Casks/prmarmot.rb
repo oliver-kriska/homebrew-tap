@@ -12,8 +12,8 @@
 # that fail Gatekeeper are unsupported — an ad-hoc-signed archive will not install
 # cleanly for anyone.
 cask "prmarmot" do
-  version "0.6.0"                                    # <- FILL per release
-  sha256 "bb5464f3b859362fa0b834dd80d2433bb543f681b5f03a6a568d2021048318f5"    # <- FILL per release
+  version "0.7.0"                                    # <- FILL per release
+  sha256 "c5331fa0892a3a4aa833da9d80d3259496c94b0a6151a6c33cc3b8758ac9dde4"    # <- FILL per release
 
   url "https://github.com/oliver-kriska/prmarmot/releases/download/v#{version}/prmarmot-v#{version}-macos-arm64.tar.gz"
   name "PR Marmot"
@@ -32,6 +32,9 @@ cask "prmarmot" do
   depends_on macos: :monterey
 
   app "prmarmot.app"
+  # The terminal/agent CLI ships inside the signed bundle; Homebrew links it
+  # onto PATH, so `brew upgrade` updates both.
+  binary "#{appdir}/prmarmot.app/Contents/MacOS/prmarmot-cli"
 
   zap trash: [
     "~/.config/prmarmot",

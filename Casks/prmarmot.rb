@@ -12,8 +12,8 @@
 # that fail Gatekeeper are unsupported — an ad-hoc-signed archive will not install
 # cleanly for anyone.
 cask "prmarmot" do
-  version "0.7.1"                                    # <- FILL per release
-  sha256 "97ca72841e38621dc9388c7a8e711aa81f488efaf31ac736afe0b22d175ef691"    # <- FILL per release
+  version "0.8.0"                                    # <- FILL per release
+  sha256 "cc5a926bed75455eea1c17a97c43f972a10eab843f335a505ca5c8b06c467fb8"    # <- FILL per release
 
   url "https://github.com/oliver-kriska/prmarmot/releases/download/v#{version}/prmarmot-v#{version}-macos-arm64.tar.gz"
   name "PR Marmot"
@@ -35,6 +35,13 @@ cask "prmarmot" do
   # The terminal/agent CLI ships inside the signed bundle; Homebrew links it
   # onto PATH, so `brew upgrade` updates both.
   binary "#{appdir}/prmarmot.app/Contents/MacOS/prmarmot-cli"
+  # Its shell completions ship in the bundle too. zsh loads a completion by the
+  # file name `_<command>`, and the others are named for the command too.
+  bash_completion "#{appdir}/prmarmot.app/Contents/Resources/completions/prmarmot-cli.bash",
+                  target: "prmarmot-cli"
+  fish_completion "#{appdir}/prmarmot.app/Contents/Resources/completions/prmarmot-cli.fish"
+  zsh_completion "#{appdir}/prmarmot.app/Contents/Resources/completions/prmarmot-cli.zsh",
+                 target: "_prmarmot-cli"
 
   zap trash: [
     "~/.config/prmarmot",

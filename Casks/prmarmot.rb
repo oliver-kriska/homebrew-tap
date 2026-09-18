@@ -12,8 +12,8 @@
 # that fail Gatekeeper are unsupported — an ad-hoc-signed archive will not install
 # cleanly for anyone.
 cask "prmarmot" do
-  version "0.9.0"                                    # <- FILL per release
-  sha256 "011e964abec987d653fa820aac59c4acfb442d8c694f00c682ae1ee9df8bc446"    # <- FILL per release
+  version "0.9.1"                                    # <- FILL per release
+  sha256 "9ae614eeb43853b052e2daefa81631526780eaf720da9b112f62f321da684a7e"    # <- FILL per release
 
   url "https://github.com/oliver-kriska/prmarmot/releases/download/v#{version}/prmarmot-v#{version}-macos-arm64.tar.gz"
   name "PR Marmot"
@@ -25,9 +25,6 @@ cask "prmarmot" do
     strategy :github_latest
   end
 
-  # PR Marmot shells out to the GitHub CLI for all API access; without gh
-  # (authenticated via `gh auth login`) the app cannot load any data.
-  depends_on formula: "gh"
   depends_on arch: :arm64
   depends_on macos: :monterey
 

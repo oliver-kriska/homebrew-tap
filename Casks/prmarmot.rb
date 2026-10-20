@@ -12,8 +12,8 @@
 # that fail Gatekeeper are unsupported — an ad-hoc-signed archive will not install
 # cleanly for anyone.
 cask "prmarmot" do
-  version "0.18.1"                                    # <- FILL per release
-  sha256 "b19266cf5fbde93a768ddd2716d5905b7ff6211af60690bc5f39ed042aa51acc"    # <- FILL per release
+  version "0.19.0"                                    # <- FILL per release
+  sha256 "ee03f14dc59658a555813a007b669c82b04b1b0a240380a60d66e978fb531e5d"    # <- FILL per release
 
   url "https://github.com/oliver-kriska/prmarmot/releases/download/v#{version}/prmarmot-v#{version}-macos-arm64.tar.gz"
   name "PR Marmot"
